@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import scipy.integrate as int
 
 #Default params
 #RM
@@ -21,14 +20,23 @@ bT_d = 1.48
 lbound = 0.001 # not zero to avoid division by 0
 ubound = 5
 
-def defaultParams(s):
-    if(s=="h"):
-        return np.array([aH_d,bH_d])
-    if(s=="i"):
-        return np.array([aI_d,bI_d])
-    if(s=="t"):
-        return np.array([aT_d,bT_d])
-
+def defaultParams(s,format = "abrkm"):
+    if(format == "abrkm"):
+        if (s == "h"):
+            return np.array([aH_d, bH_d, r_d, K, m_d])
+        if (s == "i"):
+            return np.array([aI_d, bI_d, r_d, K, m_d])
+        if (s == "t"):
+            return np.array([aT_d, bT_d, r_d, K, m_d])
+    elif(format == "ab"):
+        if (s == "h"):
+            return np.array([aH_d, bH_d])
+        if (s == "i"):
+            return np.array([aI_d, bI_d])
+        if (s == "t"):
+            return np.array([aT_d, bT_d])
+    else:
+        raise Exception("Default parameters are only defined for the formats 'abrkm' and 'ab'")
 #return the color of the model specified with "s".
 def color(s):
     if(s=="h"):
@@ -59,7 +67,7 @@ def f(x,s,a,b):
 
 
 def plotCompFunctions(s1=0, s2=0, s3=0, p1=0, p2=0, p3=0, bounds =[0.00001,5],
-                      labels=["Holling","Ivlev","Trigonometric"],title="Functional responses"):
+                      labels=["Holling","Ivlev","Trigonometric"],title="Functional responses",legLoc="best"):
     x = np.linspace(bounds[0],bounds[1],bounds[1]*10000)
     if(p1 == 0):
         p1 = defaultParams(s1)
@@ -74,10 +82,10 @@ def plotCompFunctions(s1=0, s2=0, s3=0, p1=0, p2=0, p3=0, bounds =[0.00001,5],
         plt.plot(x,f(x, s2, p2[0], p2[1]),color(s2))
     if(s3 != 0):
         plt.plot(x,f(x, s3, p3[0], p3[1]),color(s3))
-    plt.legend(labels,loc="best")
+    plt.legend(labels,loc=legLoc)
     plt.title(title)
     plt.xlabel("prey concentration, x")
     plt.ylabel("f(x)")
     plt.show()
 
-plotCompFunctions("h","i","t")
+plotCompFunctions("h","i","t",legLoc="lower right")
