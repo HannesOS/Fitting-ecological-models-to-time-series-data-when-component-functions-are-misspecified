@@ -1,3 +1,3 @@
-# Fitting-ecological-models-to-time-series-data-when-component-functions-are-misspecified
+# Functional Responses
 
 Comparison of the different functional responses.
