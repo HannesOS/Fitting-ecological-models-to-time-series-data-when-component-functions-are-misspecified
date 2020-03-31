@@ -37,6 +37,7 @@ def defaultParams(s,format = "abrkm"):
             return np.array([aT_d, bT_d])
     else:
         raise Exception("Default parameters are only defined for the formats 'abrkm' and 'ab'")
+
 #return the color of the model specified with "s".
 def color(s):
     if(s=="h"):
@@ -45,6 +46,8 @@ def color(s):
         return "black"
     if(s=="t"):
         return "red"
+    else:
+        raise Exception("Bad s : choose h for Holling, i for Ivlev, t for trigonometric")
 
 #Component functions
 #Holling
@@ -64,6 +67,8 @@ def f(x,s,a,b):
         return fi(x,a,b)
     if(s=="t"):
         return ft(x,a,b)
+    else:
+        raise Exception("Bad s : choose h for Holling, i for Ivlev, t for trigonometric")
 
 
 def plotCompFunctions(s1=0, s2=0, s3=0, p1=0, p2=0, p3=0, bounds =[0.00001,5],
