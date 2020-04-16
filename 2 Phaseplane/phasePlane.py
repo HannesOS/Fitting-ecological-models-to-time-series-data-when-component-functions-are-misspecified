@@ -193,16 +193,20 @@ def plot_nullclines(x, y, params = None, which = ["h","i","t"], fit = False, err
     i = 0
     for s in which:
         plt.plot(x, nullcl_x(x, params[i], s), color=color(s), zorder=1)
-        plt.axvline(nullcl_y(x, params[i], s), color=color(s), zorder=2)
         equilibrium(x, params[i], s)
         i=i+1
+    i=0
+    for s in which:
+        plt.axvline(nullcl_y(x, params[i], s), color=color(s), zorder=2)
+        i = i + 1
+
     if(legend != None):
         plt.legend(legend, loc=legLoc)
     plt.xticks([0.01,0.05,0.25])
-   # plt.xticks([0.01,0.1,1,5,20],[0.01,0.1,1,5,20])
+    plt.xticks([0.01,0.1,1,5,20],[0.01,0.1,1,5,20])
     plt.yticks([0,0.2,0.4,0.6,0.8,1,1.2,1.4,1.6,1.8,2],[0,0.2,0.4,0.6,0.8,1,1.2,1.4,1.6,1.8,2])
     plt.ylim(0, 1.1)
-    plt.xlim(0.01,0.25)
+    plt.xlim(0.01,5)
     plt.title(title,size =13)
     plt.ylabel("predator concentration, y ", fontsize = 12)
     plt.xlabel("prey concentration, x", fontsize = 12)
@@ -212,11 +216,12 @@ def plot_nullclines(x, y, params = None, which = ["h","i","t"], fit = False, err
 K=4
 x=np.linspace(lbound,ubound,200000)
 y=np.linspace(lbound,ubound,200000)
-hollingParamters = defaultParams("h")
-ivlevParamters = defaultParams("i")
+hollingParamters = [1.47335,0.12232,1,4,0.1]
+ivlevParamters = [6.07528,0.24252,1,4,0.1]
 trigParamters = defaultParams("t")
+p = [trigParamters,ivlevParamters]
 #enrichmentResponse(x,"h",Kmin=0.4)
 #enrichmentResponse(x,"i",Kmin=1)
 #enrichmentResponse(x,"t",Kmin = 10.06)
-plot_nullclines(x,y,which = "s",legend = None)
+plot_nullclines(x,y,which=["t","i"],legend = ("Trigonometric ","Ivlev (fitted)"),params=p,title="")
 
