@@ -1,4 +1,4 @@
-#     Hannes Erbis - 2019/20 - Osnabrück University
+# Hannes Erbis - 2019/20 - Osnabrück University --------  <a href="https://github.com/HannesOS/Fitting_ecological_models_to_time_series_data_when_component_functions_are_misspecified/raw/master/.paper/paper.pdf" target="_blank">PDF</a> 
 ![1](/.paper/1.png)
 ![2](/.paper/2.png)
 ![3](/.paper/3.png)
