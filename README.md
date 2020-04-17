@@ -1,3 +1,4 @@
+#     Hannes Erbis - 2019/20 - Osnabrück University
 ![1](/.paper/1.png)
 ![2](/.paper/2.png)
 ![3](/.paper/3.png)
