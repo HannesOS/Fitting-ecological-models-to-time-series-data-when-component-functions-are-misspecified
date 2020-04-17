@@ -1,4 +1,4 @@
-# Fitting-ecological-models-to-time-series-data-when-component-functions-are-misspecified
+# Phase plane
 Source code for creating the simplified* phase planes used in the project. 
 Exemplary plots for variations of K can be found in the plots folder.
 
